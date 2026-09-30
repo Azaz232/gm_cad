@@ -1,0 +1,24 @@
+# Скомпилированные исполняемые файлы и библиотеки
+*.exe
+*.dll
+*.lib
+*.pdb
+*.obj
+*.ilk
+*.exp
+
+# Внутренние папки Visual Studio 
+.vs/
+x64/
+Debug/
+Release/
+ARM/
+
+# Локальные настройки пользователя Студии
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Папка менеджера пакетов 
+vcpkg/
