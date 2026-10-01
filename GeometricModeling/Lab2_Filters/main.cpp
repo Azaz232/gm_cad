@@ -1,7 +1,12 @@
 #include <iostream>
 
+#include <glm/glm.hpp>
+#include <glm/vec3.hpp>
+
+#include <imgui.h>
+
 int main()
 {
-	std::cout << "preispolnyaemsya v c++" << std::endl;
-	return 0;
+
+    return 0;
 }
