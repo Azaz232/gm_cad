@@ -132,8 +132,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EmbossFilter.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="KernelFilter.h" />
+    <ClInclude Include="SharpenFilter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

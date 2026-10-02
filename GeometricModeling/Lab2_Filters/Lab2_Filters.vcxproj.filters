@@ -38,5 +38,11 @@
     <ClInclude Include="KernelFilter.h">
       <Filter>Filters</Filter>
     </ClInclude>
+    <ClInclude Include="EmbossFilter.h">
+      <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="SharpenFilter.h">
+      <Filter>Filters</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
