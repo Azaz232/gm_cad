@@ -27,12 +27,15 @@
     <ClCompile Include="Image.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="KernelFilter.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Image.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="ImageFilter.h">
+    <ClInclude Include="KernelFilter.h">
       <Filter>Filters</Filter>
     </ClInclude>
   </ItemGroup>
