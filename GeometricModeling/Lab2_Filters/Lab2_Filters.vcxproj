@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CustomWindow.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="KernelFilter.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomWindow.h" />
     <ClInclude Include="EmbossFilter.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="KernelFilter.h" />

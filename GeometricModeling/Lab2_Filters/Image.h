@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <cstdint>
+#include <iostream>
 
 class Image
 {
@@ -20,4 +21,9 @@ public:
 	int GetWidth() const { return imageWidth; }
 
 	uint8_t* GetPixelData(int x, int y);
+	const uint8_t* getRawData() const { return pixels.data(); }
+	int getChannels() const { return imageChannels; }
+
+	bool SaveToFile(const std::string &filename) const;
+	bool loadFromFile(const std::string& filename);
 };

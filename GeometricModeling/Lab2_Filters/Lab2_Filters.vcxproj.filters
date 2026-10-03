@@ -19,6 +19,9 @@
     <Filter Include="Filters">
       <UniqueIdentifier>{674a402e-7bee-45dd-a829-434f07226eb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{b1ef52ff-7847-4866-ad2d-57a4b746ac98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,6 +32,9 @@
     </ClCompile>
     <ClCompile Include="KernelFilter.cpp">
       <Filter>Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomWindow.cpp">
+      <Filter>ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="SharpenFilter.h">
       <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomWindow.h">
+      <Filter>ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
