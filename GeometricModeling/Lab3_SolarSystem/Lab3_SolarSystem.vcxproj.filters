@@ -13,5 +13,51 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{6fb7cb90-84a4-4217-99c1-64cef92128c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{5607353a-9d4c-44d2-91f7-ac433f000b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{a29f6869-86dd-4135-a858-d59541ee7992}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="CelestialBody.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Planet.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Comet.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CelestialBody.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Planet.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Comet.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
