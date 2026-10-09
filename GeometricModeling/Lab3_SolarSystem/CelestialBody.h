@@ -22,4 +22,6 @@ protected:
 	GLuint vbo = 0;
 	GLuint indexCount = 0;
 	GLuint textureId = 0;
+
+	void GenerateSphere(int sectors, int stacks);
 };

@@ -60,4 +60,12 @@
       <Filter>Rendering</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vertex.glsl">
+      <Filter>Rendering</Filter>
+    </None>
+    <None Include="fragment.glsl">
+      <Filter>Rendering</Filter>
+    </None>
+  </ItemGroup>
 </Project>
