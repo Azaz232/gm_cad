@@ -13,6 +13,7 @@ Comet::Comet(float bodySize, float rotSpeed, float orbRadiusX, float orbRadiusZ,
 	orbitRadiusZ = orbRadiusZ;
 	orbitSpeed = orbSpeed;
 	currentOrbitAngle = 0.0f;
+	color = glm::vec3(0.9f, 0.9f, 0.9f);
 
 	GenerateSphere(36, 36);
 }

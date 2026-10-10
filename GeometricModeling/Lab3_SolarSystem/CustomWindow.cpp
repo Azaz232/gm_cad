@@ -25,6 +25,8 @@ bool CustomWindow::Init()
 		return false;
 	}
 
+	glfwMakeContextCurrent(window);
+
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		return false;

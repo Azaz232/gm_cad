@@ -25,5 +25,7 @@ protected:
 	GLuint indexCount = 0;
 	GLuint textureId = 0;
 
+	glm::vec3 color = glm::vec3(1.0f);
+
 	void GenerateSphere(int sectors, int stacks);
 };
