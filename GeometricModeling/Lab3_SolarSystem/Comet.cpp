@@ -13,6 +13,8 @@ Comet::Comet(float bodySize, float rotSpeed, float orbRadiusX, float orbRadiusZ,
 	orbitRadiusZ = orbRadiusZ;
 	orbitSpeed = orbSpeed;
 	currentOrbitAngle = 0.0f;
+
+	GenerateSphere(36, 36);
 }
 
 void Comet::Update(float deltaTime)

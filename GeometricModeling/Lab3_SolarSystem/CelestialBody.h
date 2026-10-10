@@ -6,6 +6,8 @@
 class CelestialBody
 {
 public:
+	CelestialBody(float bodySize = 1.0f, float rotSpeed = 0.0f);
+
 	virtual void Update(float deltaTime);
 	virtual void Draw();
 

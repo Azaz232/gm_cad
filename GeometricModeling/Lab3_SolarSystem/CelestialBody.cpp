@@ -1,8 +1,19 @@
 #include "CelestialBody.h"
 
 #include <glm/gtc/matrix_transform.hpp> 
+#include <glm/gtc/type_ptr.hpp>
 
 const float PI = 3.14159265359f;
+
+CelestialBody::CelestialBody(float bodySize, float rotSpeed)
+{
+    size = bodySize;
+    rotationSpeed = rotSpeed;
+    currentRotation = 0.0f;
+    position = glm::vec3(0.0f); 
+
+    GenerateSphere(36, 36);
+}
 
 void CelestialBody::Update(float deltaTime)
 {
@@ -23,8 +34,12 @@ void CelestialBody::Draw()
     modelMatrix = glm::rotate(modelMatrix, glm::radians(currentRotation), glm::vec3(0.0f, 1.0f, 0.0f));
     modelMatrix = glm::scale(modelMatrix, glm::vec3(size));
 
-    glBindVertexArray(vao);
+    GLint currentProgram;
+    glGetIntegerv(GL_CURRENT_PROGRAM, &currentProgram);
 
+    glUniformMatrix4fv(glGetUniformLocation(currentProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+
+    glBindVertexArray(vao);
     glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }

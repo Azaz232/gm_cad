@@ -12,6 +12,8 @@ Planet::Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed)
 	orbitRadius = orbRadius;
 	orbitSpeed = orbSpeed;
 	currentOrbitAngle = 0.0f;
+
+	GenerateSphere(36, 36);
 }
 
 void Planet::Update(float deltaTime)
