@@ -13,6 +13,7 @@ Planet::Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed)
 	orbitSpeed = orbSpeed;
 	currentOrbitAngle = 0.0f;
 	color = glm::vec3(0.2f, 0.6f, 1.0f);
+	isSun = 0;
 
 	GenerateSphere(36, 36);
 }

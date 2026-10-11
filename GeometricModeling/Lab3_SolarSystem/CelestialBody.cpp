@@ -11,7 +11,8 @@ CelestialBody::CelestialBody(float bodySize, float rotSpeed)
     rotationSpeed = rotSpeed;
     currentRotation = 0.0f;
     position = glm::vec3(0.0f); 
-    color = glm::vec3(1.0f, 0.85f, 0.2f);
+    color = glm::vec3(2.0f, 0.85f, 0.2f);
+    isSun = 1;
 
     GenerateSphere(36, 36);
 }
@@ -42,6 +43,7 @@ void CelestialBody::Draw()
     
     glUniformMatrix4fv(glGetUniformLocation(currentProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
     glUniform3f(glGetUniformLocation(currentProgram, "objectColor"), color.r, color.g, color.b);
+    //glUniform1i(glGetUniformLocation(currentProgram, "isSun"), isSun);
 
     glBindVertexArray(vao);
     glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
