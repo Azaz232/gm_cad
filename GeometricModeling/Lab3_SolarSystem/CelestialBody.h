@@ -14,6 +14,8 @@ public:
 	virtual void GenerateOrbit() {} 
 	virtual void DrawOrbit();
 
+	
+
 	virtual ~CelestialBody() = default;
 private:
 

@@ -20,9 +20,26 @@ bool Scene::Init()
 	spaceShader = new Shader("vertex.glsl", "fragment.glsl");
 	sun = new CelestialBody(3.0f, 10.0f);
 
-	Planet* earth = new Planet(1.2f, 20.0f, 10.0f, 25.0f);
+	Planet* mercury = new Planet(0.4f, 15.0f, 5.0f, 60.0f, glm::vec3(0.6f, 0.6f, 0.6f));
+	mercury->GenerateOrbit();
+	bodies.push_back(mercury);
+
+	Planet* venus = new Planet(0.9f, 12.0f, 8.0f, 40.0f, glm::vec3(0.85f, 0.85f, 0.6f));
+	venus->GenerateOrbit();
+	bodies.push_back(venus);
+
+	Planet* earth = new Planet(1.2f, 20.0f, 10.0f, 25.0f, glm::vec3(0.2f, 0.5f, 1.0f));
 	earth->GenerateOrbit();
 	bodies.push_back(earth);
+
+	Planet* mars = new Planet(0.6f, 22.0f, 16.0f, 18.0f, glm::vec3(0.9f, 0.3f, 0.2f));
+	mars->GenerateOrbit();
+	bodies.push_back(mars);
+
+	Planet* jupiter = new Planet(1.8f, 35.0f, 22.0f, 10.0f, glm::vec3(0.8f, 0.55f, 0.35f));
+	jupiter->GenerateOrbit();
+	bodies.push_back(jupiter);
+
 
 	Comet* myComet = new Comet(0.4f, 50.0f, 18.0f, 5.0f, 35.0f);
 	bodies.push_back(myComet);
