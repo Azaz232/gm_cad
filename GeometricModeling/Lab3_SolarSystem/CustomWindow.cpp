@@ -1,6 +1,15 @@
 #include "CustomWindow.h"
 #include <iostream>
 
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	CustomWindow* customWin = static_cast<CustomWindow*>(glfwGetWindowUserPointer(window));
+	if (customWin)
+	{
+		customWin->ProcessMouseScroll(static_cast<float>(yoffset));
+	}
+}
+
 CustomWindow::~CustomWindow()
 {
 	if (!window)
@@ -36,6 +45,9 @@ bool CustomWindow::Init()
 	{
 		return false;
 	}
+
+	glfwSetWindowUserPointer(window, this);
+	glfwSetScrollCallback(window, scroll_callback);
 
 	return true;
 }
@@ -75,4 +87,9 @@ void CustomWindow::ProcessInput()
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) scene.GetCamera().ProcessKeyboard(3, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) scene.GetCamera().ProcessKeyboard(4, deltaTime);
 
+}
+
+void CustomWindow::ProcessMouseScroll(float yOffset)
+{
+	scene.GetCamera().ProcessMouse(yOffset);
 }

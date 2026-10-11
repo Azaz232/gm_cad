@@ -12,6 +12,7 @@ public:
 
     bool Init();     
     void Run();
+    void ProcessMouseScroll(float yOffset);
 private:
     void ProcessInput(); 
 
