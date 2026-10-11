@@ -34,3 +34,37 @@ void Planet::Update(float deltaTime)
 	position.y = 0.0f;
 	position.z = orbitRadius * std::sin(radians);
 }
+
+void Planet::GenerateOrbit()
+{
+	const int pointsCount = 64; 
+	orbitVertexCount = pointsCount;
+
+	std::vector<float> orbitVertices;
+
+	for (int i = 0; i < pointsCount; ++i)
+	{
+		float alpha = ((float)i / pointsCount) * 2.0f * 3.14159265359f;
+
+		float x = orbitRadius * std::cos(alpha);
+		float y = 0.0f;
+		float z = orbitRadius * std::sin(alpha);
+
+		orbitVertices.push_back(x);
+		orbitVertices.push_back(y);
+		orbitVertices.push_back(z);
+	}
+	glGenVertexArrays(1, &orbitVao);
+	glGenBuffers(1, &orbitVbo);
+
+	glBindVertexArray(orbitVao);
+
+	glBindBuffer(GL_ARRAY_BUFFER, orbitVbo);
+	glBufferData(GL_ARRAY_BUFFER, orbitVertices.size() * sizeof(float), orbitVertices.data(), GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+}

@@ -11,6 +11,9 @@ public:
 	virtual void Update(float deltaTime);
 	virtual void Draw();
 
+	virtual void GenerateOrbit() {} 
+	virtual void DrawOrbit();
+
 	virtual ~CelestialBody() = default;
 private:
 
@@ -24,6 +27,10 @@ protected:
 	GLuint vbo = 0;
 	GLuint indexCount = 0;
 	GLuint textureId = 0;
+
+	GLuint orbitVao = 0;
+	GLuint orbitVbo = 0;
+	GLuint orbitVertexCount = 0;
 
 	glm::vec3 color = glm::vec3(1.0f);
 

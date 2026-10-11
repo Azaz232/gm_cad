@@ -7,6 +7,7 @@ class Planet : public CelestialBody
 public:
 	Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed);
 	void Update(float deltaTime) override;
+	void GenerateOrbit() override;
 
 private:
 	float orbitRadius;

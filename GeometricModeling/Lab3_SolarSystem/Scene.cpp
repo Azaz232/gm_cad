@@ -21,6 +21,7 @@ bool Scene::Init()
 	sun = new CelestialBody(3.0f, 10.0f);
 
 	Planet* earth = new Planet(1.2f, 20.0f, 10.0f, 25.0f);
+	earth->GenerateOrbit();
 	bodies.push_back(earth);
 
 	Comet* myComet = new Comet(0.4f, 50.0f, 18.0f, 5.0f, 35.0f);
@@ -55,6 +56,7 @@ void Scene::Render(int windowWidth, int windowHeight)
 	sun->Draw();
 	for (auto* planet : bodies)
 	{
+		planet->DrawOrbit();
 		planet->Draw();
 	}
 }

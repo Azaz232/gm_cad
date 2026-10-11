@@ -48,6 +48,23 @@ void CelestialBody::Draw()
     glBindVertexArray(0);
 }
 
+void CelestialBody::DrawOrbit()
+{
+    if (orbitVao == 0) return;
+
+    GLint currentProgram;
+    glGetIntegerv(GL_CURRENT_PROGRAM, &currentProgram);
+
+    glm::mat4 modelMatrix = glm::mat4(1.0f);
+    glUniformMatrix4fv(glGetUniformLocation(currentProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+
+    glUniform3f(glGetUniformLocation(currentProgram, "objectColor"), 0.4f, 0.4f, 0.4f);
+
+    glBindVertexArray(orbitVao);
+    glDrawArrays(GL_LINE_LOOP, 0, orbitVertexCount);
+    glBindVertexArray(0);
+}
+
 void CelestialBody::GenerateSphere(int sectors, int stacks)
 {
     std::vector<float> vertices;
