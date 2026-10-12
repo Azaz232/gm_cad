@@ -40,6 +40,21 @@ bool Scene::Init()
 	jupiter->GenerateOrbit();
 	bodies.push_back(jupiter);
 
+	Planet* saturn = new Planet(1.5f, 30.0f, 28.0f, 8.0f, glm::vec3(0.85f, 0.75f, 0.55f));
+	saturn->GenerateOrbit();
+	bodies.push_back(saturn);
+
+	Planet* uranus = new Planet(1.1f, 25.0f, 34.0f, 6.0f, glm::vec3(0.5f, 0.8f, 0.8f));
+	uranus->GenerateOrbit();
+	bodies.push_back(uranus);
+
+	Planet* neptune = new Planet(1.0f, 22.0f, 40.0f, 4.0f, glm::vec3(0.2f, 0.3f, 0.8f));
+	neptune->GenerateOrbit();
+	bodies.push_back(neptune);
+
+	Planet* pluto = new Planet(0.3f, 10.0f, 45.0f, 2.0f, glm::vec3(0.7f, 0.65f, 0.6f));
+	pluto->GenerateOrbit();
+	bodies.push_back(pluto);
 
 	Comet* myComet = new Comet(0.4f, 50.0f, 18.0f, 5.0f, 35.0f);
 	bodies.push_back(myComet);
