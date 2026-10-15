@@ -25,7 +25,7 @@ bool Scene::Init()
 	mercury->GenerateOrbit();
 	bodies.push_back(mercury);
 
-	Planet* venus = new Planet(0.9f, 12.0f, 8.0f, 40.0f, glm::vec3(0.85f, 0.85f, 0.6f));
+	Planet* venus = new Planet(0.9f, 12.0f, 8.0f, 40.0f, glm::vec3(0.85f, 0.85f, 0.6f), "textures/venus.png");
 	venus->GenerateOrbit();
 	bodies.push_back(venus);
 
@@ -53,7 +53,7 @@ bool Scene::Init()
 	neptune->GenerateOrbit();
 	bodies.push_back(neptune);
 
-	Planet* pluto = new Planet(0.3f, 10.0f, 45.0f, 2.0f, glm::vec3(0.7f, 0.65f, 0.6f));
+	Planet* pluto = new Planet(0.3f, 10.0f, 45.0f, 2.0f, glm::vec3(0.7f, 0.65f, 0.6f), "textures/pluto.jpg");
 	pluto->GenerateOrbit();
 	bodies.push_back(pluto);
 
