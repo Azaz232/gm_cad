@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-Planet::Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed, glm::vec3 bodyColor)
+Planet::Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed, glm::vec3 bodyColor, const char* texturePath)
 {
 	size = bodySize;
 	rotationSpeed = rotSpeed;
@@ -14,6 +14,8 @@ Planet::Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed, 
 	currentOrbitAngle = 0.0f;
 	color = bodyColor;
 	isSun = 0;
+
+	textureId = LoadTexture(texturePath);
 
 	GenerateSphere(36, 36);
 }

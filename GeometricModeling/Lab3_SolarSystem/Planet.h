@@ -5,7 +5,7 @@
 class Planet : public CelestialBody
 {
 public:
-	Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed, glm::vec3 bodyColor = glm::vec3(1.0f));
+	Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed, glm::vec3 bodyColor = glm::vec3(1.0f), const char* texturePath = "");
 	void Update(float deltaTime) override;
 	void GenerateOrbit() override;
 

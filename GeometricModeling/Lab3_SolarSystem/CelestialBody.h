@@ -14,7 +14,7 @@ public:
 	virtual void GenerateOrbit() {} 
 	virtual void DrawOrbit();
 
-	
+	void InitAsSun();
 
 	virtual ~CelestialBody() = default;
 private:
@@ -34,6 +34,8 @@ protected:
 	GLuint orbitVao = 0;
 	GLuint orbitVbo = 0;
 	GLuint orbitVertexCount = 0;
+
+	GLuint LoadTexture(const char* path);
 
 	glm::vec3 color = glm::vec3(1.0f);
 
