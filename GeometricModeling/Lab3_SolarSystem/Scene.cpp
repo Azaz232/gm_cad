@@ -18,42 +18,42 @@ Scene::~Scene()
 bool Scene::Init()
 {
 	spaceShader = new Shader("vertex.glsl", "fragment.glsl");
-	sun = new CelestialBody(3.0f, 10.0f);
+	sun = new CelestialBody(3.5f, 10.0f);
 	sun->InitAsSun();
 
-	Planet* mercury = new Planet(0.4f, 15.0f, 5.0f, 60.0f, glm::vec3(0.6f, 0.6f, 0.6f), "textures/mercury.jpg");
+	Planet* mercury = new Planet(0.25f, 15.0f, 6.0f, 60.0f, glm::vec3(0.6f, 0.6f, 0.6f), "textures/mercury.jpg");
 	mercury->GenerateOrbit();
 	bodies.push_back(mercury);
 
-	Planet* venus = new Planet(0.9f, 12.0f, 8.0f, 40.0f, glm::vec3(0.85f, 0.85f, 0.6f), "textures/venus.png");
+	Planet* venus = new Planet(0.45f, 12.0f, 9.0f, 40.0f, glm::vec3(0.85f, 0.85f, 0.6f), "textures/venus.png");
 	venus->GenerateOrbit();
 	bodies.push_back(venus);
 
-	Planet* earth = new Planet(1.2f, 20.0f, 10.0f, 25.0f, glm::vec3(0.2f, 0.5f, 1.0f), "textures/earth.jpg");
+	Planet* earth = new Planet(0.5f, 20.0f, 12.0f, 25.0f, glm::vec3(0.2f, 0.5f, 1.0f), "textures/earth.jpg");
 	earth->GenerateOrbit();
 	bodies.push_back(earth);
 
-	Planet* mars = new Planet(0.6f, 22.0f, 16.0f, 18.0f, glm::vec3(0.9f, 0.3f, 0.2f), "textures/mars.jpg");
+	Planet* mars = new Planet(0.35f, 22.0f, 15.0f, 18.0f, glm::vec3(0.9f, 0.3f, 0.2f), "textures/mars.jpg");
 	mars->GenerateOrbit();
 	bodies.push_back(mars);
 
-	Planet* jupiter = new Planet(1.8f, 35.0f, 22.0f, 10.0f, glm::vec3(0.8f, 0.55f, 0.35f), "textures/jupiter.jpg");
+	Planet* jupiter = new Planet(1.3f, 35.0f, 20.0f, 10.0f, glm::vec3(0.8f, 0.55f, 0.35f), "textures/jupiter.jpg");
 	jupiter->GenerateOrbit();
 	bodies.push_back(jupiter);
 
-	Planet* saturn = new Planet(1.5f, 30.0f, 28.0f, 8.0f, glm::vec3(0.85f, 0.75f, 0.55f), "textures/saturn.jpg");
+	Planet* saturn = new Planet(1.1f, 30.0f, 25.0f, 8.0f, glm::vec3(0.85f, 0.75f, 0.55f), "textures/saturn.jpg");
 	saturn->GenerateOrbit();
 	bodies.push_back(saturn);
 
-	Planet* uranus = new Planet(1.1f, 25.0f, 34.0f, 6.0f, glm::vec3(0.5f, 0.8f, 0.8f), "textures/uranus.jpg");
+	Planet* uranus = new Planet(0.8f, 25.0f, 31.0f, 6.0f, glm::vec3(0.5f, 0.8f, 0.8f), "textures/uranus.jpg");
 	uranus->GenerateOrbit();
 	bodies.push_back(uranus);
 
-	Planet* neptune = new Planet(1.0f, 22.0f, 40.0f, 4.0f, glm::vec3(0.2f, 0.3f, 0.8f), "textures/neptune.jpg");
+	Planet* neptune = new Planet(0.75f, 22.0f, 37.0f, 4.0f, glm::vec3(0.2f, 0.3f, 0.8f), "textures/neptune.jpg");
 	neptune->GenerateOrbit();
 	bodies.push_back(neptune);
 
-	Planet* pluto = new Planet(0.3f, 10.0f, 45.0f, 2.0f, glm::vec3(0.7f, 0.65f, 0.6f), "textures/pluto.jpg");
+	Planet* pluto = new Planet(0.15f, 10.0f, 43.0f, 2.0f, glm::vec3(0.7f, 0.65f, 0.6f), "textures/pluto.jpg");
 	pluto->GenerateOrbit();
 	bodies.push_back(pluto);
 

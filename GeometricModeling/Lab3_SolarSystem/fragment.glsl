@@ -14,10 +14,15 @@ void main()
 {
     if (objectColor.r > 1.1)
     {
-        FragColor = vec4(1.0, objectColor.g, objectColor.b, 1.0);
+       if (hasTexture == 1) {
+            vec4 sunTex = texture(texture_diffuse, vec2(TexCoords.x, 1.0 - TexCoords.y));
+            FragColor = vec4(sunTex.rgb, 1.0);
+        } else {
+            FragColor = vec4(1.0, objectColor.g, objectColor.b, 1.0);
+        }
         return;
     }
-    float ambientStrength = 0.15;
+    float ambientStrength = 0.35;
     vec3 ambient = ambientStrength * vec3(1.0, 1.0, 1.0);
     vec3 norm = normalize(Normal);
     vec3 lightPos = vec3(0.0, 0.0, 0.0);

@@ -24,6 +24,8 @@ void CelestialBody::InitAsSun()
     color = glm::vec3(2.0f, 0.85f, 0.2f); 
     isSun = 1;
     GenerateSphere(36, 36); 
+
+    textureId = LoadTexture("textures/sun.jpg");
 }
 
 void CelestialBody::Update(float deltaTime)
@@ -80,7 +82,9 @@ void CelestialBody::DrawOrbit()
     glm::mat4 modelMatrix = glm::mat4(1.0f);
     glUniformMatrix4fv(glGetUniformLocation(currentProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
-    glUniform3f(glGetUniformLocation(currentProgram, "objectColor"), 0.6f, 0.6f, 0.6f);
+    glUniform3f(glGetUniformLocation(currentProgram, "objectColor"), 0.7f, 0.7f, 0.7f);
+
+    glUniform1i(glGetUniformLocation(currentProgram, "hasTexture"), 0);
 
     glBindVertexArray(orbitVao);
     glDrawArrays(GL_LINE_LOOP, 0, orbitVertexCount);
