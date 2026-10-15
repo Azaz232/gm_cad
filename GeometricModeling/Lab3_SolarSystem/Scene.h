@@ -25,4 +25,6 @@ private:
 
     CelestialBody* sun = nullptr;
     std::vector<CelestialBody*> bodies;
+
+    bool MusyaOn = false;
 };

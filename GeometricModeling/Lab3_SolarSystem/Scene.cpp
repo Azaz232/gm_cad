@@ -57,7 +57,7 @@ bool Scene::Init()
 	pluto->GenerateOrbit();
 	bodies.push_back(pluto);
 
-	Comet* myComet = new Comet(0.4f, 50.0f, 18.0f, 5.0f, 35.0f);
+	Comet* myComet = new Comet(0.4f, 50.0f, 25.0f, 8.0f, 35.0f);
 	bodies.push_back(myComet);
 
 	glEnable(GL_DEPTH_TEST);
@@ -86,10 +86,37 @@ void Scene::Render(int windowWidth, int windowHeight)
 	glUniformMatrix4fv(glGetUniformLocation(spaceShader->GetID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 	glUniformMatrix4fv(glGetUniformLocation(spaceShader->GetID(), "view"), 1, GL_FALSE, glm::value_ptr(view));
 
-	sun->Draw();
-	for (auto* planet : bodies)
+	GLint currentProgram;
+	glGetIntegerv(GL_CURRENT_PROGRAM, &currentProgram);
+
+	glm::vec3 foundCometPos = glm::vec3(0.0f);
+	bool cometExists = false;
+
+	for (auto* body : bodies)
 	{
-		planet->DrawOrbit();
-		planet->Draw();
+		if (Comet* c = dynamic_cast<Comet*>(body))
+		{
+			foundCometPos = c->GetPosition();
+			cometExists = true;
+			break;
+		}
+	}
+
+	if (cometExists)
+	{
+		glUniform3f(glGetUniformLocation(currentProgram, "cometPos"), foundCometPos.x, foundCometPos.y, foundCometPos.z);
+		glUniform1i(glGetUniformLocation(currentProgram, "isCometActive"), 1);
+	}
+	else
+	{
+		glUniform1i(glGetUniformLocation(currentProgram, "isCometActive"), 0);
+	}
+
+	if (sun) sun->Draw();
+
+	for (auto* body : bodies)
+	{
+		body->DrawOrbit(); 
+		body->Draw();      
 	}
 }

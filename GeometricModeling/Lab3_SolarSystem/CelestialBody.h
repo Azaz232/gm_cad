@@ -16,6 +16,8 @@ public:
 
 	void InitAsSun();
 
+	glm::vec3 GetPosition() const { return position; }
+
 	virtual ~CelestialBody() = default;
 private:
 
