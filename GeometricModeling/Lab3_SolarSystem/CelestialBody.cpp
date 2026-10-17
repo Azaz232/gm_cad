@@ -53,10 +53,12 @@ void CelestialBody::Draw()
     glUniformMatrix4fv(glGetUniformLocation(currentProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
     glUniform3f(glGetUniformLocation(currentProgram, "objectColor"), color.r, color.g, color.b);
 
-    if (textureId != 0)
+    GLuint activeTex = (m_textureOverride != 0) ? m_textureOverride : textureId;
+
+    if (activeTex != 0)
     {
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, textureId);
+        glBindTexture(GL_TEXTURE_2D, activeTex);
         glUniform1i(glGetUniformLocation(currentProgram, "texture_diffuse"), 0);
         glUniform1i(glGetUniformLocation(currentProgram, "hasTexture"), 1);
     }
@@ -211,4 +213,9 @@ GLuint CelestialBody::LoadTexture(const char* path)
     }
 
     return textureID;
+}
+
+GLuint CelestialBody::GetTextureLoader(const char* path)
+{
+    return LoadTexture(path);
 }

@@ -10,6 +10,22 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	}
 }
 
+void mouse_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	CustomWindow* myWindow = static_cast<CustomWindow*>(glfwGetWindowUserPointer(window));
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+	{
+		double currentTime = glfwGetTime();
+		
+		if (currentTime - myWindow->m_time <= 0.4)
+		{
+			myWindow->scene.SetMusyaOn(!myWindow->scene.GetMusyaOn());
+		}
+		
+		myWindow->m_time = currentTime;
+	}
+}
+
 CustomWindow::~CustomWindow()
 {
 	if (!window)
@@ -48,6 +64,7 @@ bool CustomWindow::Init()
 
 	glfwSetWindowUserPointer(window, this);
 	glfwSetScrollCallback(window, scroll_callback);
+	glfwSetMouseButtonCallback(window, mouse_callback);
 
 	return true;
 }
@@ -69,6 +86,8 @@ void CustomWindow::Run()
 		int width, height;
 		glfwGetFramebufferSize(window, &width, &height);
 
+		glViewport(0, 0, width, height);
+
 		scene.Render(width, height);
 
 		glfwSwapBuffers(window);
@@ -86,7 +105,6 @@ void CustomWindow::ProcessInput()
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) scene.GetCamera().ProcessKeyboard(2, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) scene.GetCamera().ProcessKeyboard(3, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) scene.GetCamera().ProcessKeyboard(4, deltaTime);
-
 }
 
 void CustomWindow::ProcessMouseScroll(float yOffset)

@@ -21,4 +21,7 @@ private:
 
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
+
+    double m_time = 0;
+    friend void mouse_callback(GLFWwindow* window, int button, int action, int mods); // ive never heard of a "friend" 
 };

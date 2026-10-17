@@ -19,6 +19,9 @@ public:
 
     Camera& GetCamera() { return camera; }
 
+    void SetMusyaOn(bool musyaOn) { MusyaOn = musyaOn; }
+    bool GetMusyaOn() { return MusyaOn; }
+
 private:
     Shader* spaceShader = nullptr;
     Camera camera;
@@ -26,5 +29,10 @@ private:
     CelestialBody* sun = nullptr;
     std::vector<CelestialBody*> bodies;
 
+    GLuint musyaVao = 0;
+    GLuint musyaVbo = 0;
+    GLuint musyaEbo = 0;
+
     bool MusyaOn = false;
+    GLuint Musya;
 };

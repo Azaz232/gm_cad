@@ -15,6 +15,10 @@ public:
 	virtual void DrawOrbit();
 
 	void InitAsSun();
+	
+	GLuint GetTextureLoader(const char* path);
+	void SetTextureOverride(GLuint overrideTexId) { m_textureOverride = overrideTexId; }
+	void ClearTextureOverride() { m_textureOverride = 0; }
 
 	glm::vec3 GetPosition() const { return position; }
 
@@ -38,6 +42,7 @@ protected:
 	GLuint orbitVertexCount = 0;
 
 	GLuint LoadTexture(const char* path);
+	GLuint m_textureOverride = 0; 
 
 	glm::vec3 color = glm::vec3(1.0f);
 

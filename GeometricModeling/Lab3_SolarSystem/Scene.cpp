@@ -11,6 +11,7 @@ Scene::~Scene()
 	{
 		delete body;
 	}
+	if (musyaVao != 0) glDeleteVertexArrays(1, &musyaVao);
 
 	if (spaceShader) delete spaceShader;
 }
@@ -20,6 +21,8 @@ bool Scene::Init()
 	spaceShader = new Shader("vertex.glsl", "fragment.glsl");
 	sun = new CelestialBody(3.5f, 10.0f);
 	sun->InitAsSun();
+
+	Musya = sun->GetTextureLoader("textures/musya1.png");
 
 	Planet* mercury = new Planet(0.25f, 15.0f, 6.0f, 60.0f, glm::vec3(0.6f, 0.6f, 0.6f), "textures/mercury.jpg");
 	mercury->GenerateOrbit();
@@ -61,6 +64,8 @@ bool Scene::Init()
 	bodies.push_back(myComet);
 
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	return true;
 }
@@ -112,7 +117,19 @@ void Scene::Render(int windowWidth, int windowHeight)
 		glUniform1i(glGetUniformLocation(currentProgram, "isCometActive"), 0);
 	}
 
-	if (sun) sun->Draw();
+	if (sun)
+	{
+		if (MusyaOn)
+		{
+			sun->SetTextureOverride(Musya);
+		}
+		else
+		{
+			sun->ClearTextureOverride();
+		}
+
+		sun->Draw(); 
+	}
 
 	for (auto* body : bodies)
 	{
