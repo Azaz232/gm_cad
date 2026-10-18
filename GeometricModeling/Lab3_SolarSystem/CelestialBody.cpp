@@ -36,7 +36,7 @@ void CelestialBody::Update(float deltaTime)
     }
 }
 
-void CelestialBody::Draw()
+void CelestialBody::Draw(GLint modelLoc, GLint colorLoc, GLint texDiffuseLoc, GLint hasTexLoc)
 {
     if (vao == 0) return;
 
@@ -48,8 +48,8 @@ void CelestialBody::Draw()
     GLint currentProgram;
     glGetIntegerv(GL_CURRENT_PROGRAM, &currentProgram);
     
-    glUniformMatrix4fv(glGetUniformLocation(currentProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
-    glUniform3f(glGetUniformLocation(currentProgram, "objectColor"), color.r, color.g, color.b);
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniform3f(colorLoc, color.r, color.g, color.b);
 
     GLuint activeTex = (m_textureOverride != 0) ? m_textureOverride : textureId;
 
@@ -57,22 +57,21 @@ void CelestialBody::Draw()
     {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, activeTex);
-        glUniform1i(glGetUniformLocation(currentProgram, "texture_diffuse"), 0);
-        glUniform1i(glGetUniformLocation(currentProgram, "hasTexture"), 1);
+        glUniform1i(texDiffuseLoc, 0);
+        glUniform1i(hasTexLoc, 1);
     }
     else
     {
-        glUniform1i(glGetUniformLocation(currentProgram, "hasTexture"), 0);
+        glUniform1i(hasTexLoc, 0);
     }
 
     glBindVertexArray(vao);
     glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
-
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void CelestialBody::DrawOrbit()
+void CelestialBody::DrawOrbit(GLint modelLoc, GLint colorLoc, GLint hasTexLoc)
 {
     if (orbitVao == 0) return;
 
@@ -80,11 +79,11 @@ void CelestialBody::DrawOrbit()
     glGetIntegerv(GL_CURRENT_PROGRAM, &currentProgram);
 
     glm::mat4 modelMatrix = glm::mat4(1.0f);
-    glUniformMatrix4fv(glGetUniformLocation(currentProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
 
-    glUniform3f(glGetUniformLocation(currentProgram, "objectColor"), 0.7f, 0.7f, 0.7f);
+    glUniform3f(colorLoc, 0.7f, 0.7f, 0.7f);
 
-    glUniform1i(glGetUniformLocation(currentProgram, "hasTexture"), 0);
+    glUniform1i(hasTexLoc, 0);
 
     glBindVertexArray(orbitVao);
     glDrawArrays(GL_LINE_LOOP, 0, orbitVertexCount);

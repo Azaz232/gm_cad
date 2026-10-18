@@ -16,9 +16,28 @@ Scene::~Scene()
 	if (spaceShader) delete spaceShader;
 }
 
+void Scene::CacheUnifoms()
+{
+	if (!spaceShader) return;
+
+	GLuint shaderID = spaceShader->GetID();
+
+	uniforms.projection = glGetUniformLocation(shaderID, "projection");
+	uniforms.view = glGetUniformLocation(shaderID, "view");
+	uniforms.model = glGetUniformLocation(shaderID, "model");
+	uniforms.objectColor = glGetUniformLocation(shaderID, "objectColor");
+	uniforms.texture_diffuse = glGetUniformLocation(shaderID, "texture_diffuse");
+	uniforms.hasTexture = glGetUniformLocation(shaderID, "hasTexture");
+	uniforms.cometPos = glGetUniformLocation(shaderID, "cometPos");
+	uniforms.isCometActive = glGetUniformLocation(shaderID, "isCometActive");
+}
+
 bool Scene::Init()
 {
 	spaceShader = new Shader("vertex.glsl", "fragment.glsl");
+
+	CacheUnifoms();
+
 	sun = new CelestialBody(3.5f, 10.0f);
 	sun->InitAsSun();
 
@@ -89,8 +108,8 @@ void Scene::Render(int windowWidth, int windowHeight)
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)windowWidth / (float)windowHeight, 0.1f, 100.0f);
 	glm::mat4 view = camera.GetViewMatrix();
 
-	glUniformMatrix4fv(glGetUniformLocation(spaceShader->GetID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-	glUniformMatrix4fv(glGetUniformLocation(spaceShader->GetID(), "view"), 1, GL_FALSE, glm::value_ptr(view));
+	glUniformMatrix4fv(uniforms.projection, 1, GL_FALSE, glm::value_ptr(projection));
+	glUniformMatrix4fv(uniforms.view, 1, GL_FALSE, glm::value_ptr(view));
 
 	GLint currentProgram;
 	glGetIntegerv(GL_CURRENT_PROGRAM, &currentProgram);
@@ -98,12 +117,12 @@ void Scene::Render(int windowWidth, int windowHeight)
 	if (activeComet)
 	{
 		glm::vec3 foundCometPos = activeComet->GetPosition();
-		glUniform3f(glGetUniformLocation(currentProgram, "cometPos"), foundCometPos.x, foundCometPos.y, foundCometPos.z);
-		glUniform1i(glGetUniformLocation(currentProgram, "isCometActive"), 1);
+		glUniform3f(uniforms.cometPos, foundCometPos.x, foundCometPos.y, foundCometPos.z);
+		glUniform1i(uniforms.isCometActive, 1);
 	}
 	else
 	{
-		glUniform1i(glGetUniformLocation(currentProgram, "isCometActive"), 0);
+		glUniform1i(uniforms.isCometActive, 0);
 	}
 
 	if (sun)
@@ -117,12 +136,12 @@ void Scene::Render(int windowWidth, int windowHeight)
 			sun->ClearTextureOverride();
 		}
 
-		sun->Draw(); 
+		sun->Draw(uniforms.model, uniforms.objectColor, uniforms.texture_diffuse, uniforms.hasTexture);
 	}
 
 	for (auto* body : bodies)
 	{
-		body->DrawOrbit(); 
-		body->Draw();      
+		body->DrawOrbit(uniforms.model, uniforms.objectColor, uniforms.hasTexture);
+		body->Draw(uniforms.model, uniforms.objectColor, uniforms.texture_diffuse, uniforms.hasTexture);
 	}
 }

@@ -9,10 +9,10 @@ public:
 	CelestialBody(float bodySize = 1.0f, float rotSpeed = 0.0f);
 
 	virtual void Update(float deltaTime);
-	virtual void Draw();
+	virtual void Draw(GLint modelLoc, GLint colorLoc, GLint texDiffuseLoc, GLint hasTexLoc);
 
 	virtual void GenerateOrbit() {} 
-	virtual void DrawOrbit();
+	virtual void DrawOrbit(GLint modelLoc, GLint colorLoc, GLint hasTexLoc);
 
 	void InitAsSun();
 	

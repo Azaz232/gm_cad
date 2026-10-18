@@ -37,4 +37,18 @@ private:
 
     bool MusyaOn = false;
     GLuint Musya;
+
+    struct UniformLocations
+    {
+        GLint projection;
+        GLint view;
+        GLint model;
+        GLint objectColor;
+        GLint texture_diffuse;
+        GLint hasTexture;
+        GLint cometPos;
+        GLint isCometActive;
+    } uniforms;
+    void CacheUnifoms();
+
 };
