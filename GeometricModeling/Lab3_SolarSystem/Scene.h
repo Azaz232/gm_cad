@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "CelestialBody.h"
+#include "Comet.h"
 
 class Scene
 {
@@ -27,6 +28,7 @@ private:
     Camera camera;
 
     CelestialBody* sun = nullptr;
+    Comet* activeComet = nullptr;
     std::vector<CelestialBody*> bodies;
 
     GLuint musyaVao = 0;

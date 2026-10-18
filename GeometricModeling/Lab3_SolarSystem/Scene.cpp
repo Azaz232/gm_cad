@@ -60,8 +60,9 @@ bool Scene::Init()
 	pluto->GenerateOrbit();
 	bodies.push_back(pluto);
 
-	Comet* myComet = new Comet(0.4f, 50.0f, 25.0f, 8.0f, 35.0f);
-	bodies.push_back(myComet);
+	Comet* comet = new Comet(0.4f, 50.0f, 25.0f, 8.0f, 35.0f);
+	bodies.push_back(comet);
+	activeComet = comet;
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
@@ -94,21 +95,9 @@ void Scene::Render(int windowWidth, int windowHeight)
 	GLint currentProgram;
 	glGetIntegerv(GL_CURRENT_PROGRAM, &currentProgram);
 
-	glm::vec3 foundCometPos = glm::vec3(0.0f);
-	bool cometExists = false;
-
-	for (auto* body : bodies)
+	if (activeComet)
 	{
-		if (Comet* c = dynamic_cast<Comet*>(body))
-		{
-			foundCometPos = c->GetPosition();
-			cometExists = true;
-			break;
-		}
-	}
-
-	if (cometExists)
-	{
+		glm::vec3 foundCometPos = activeComet->GetPosition();
 		glUniform3f(glGetUniformLocation(currentProgram, "cometPos"), foundCometPos.x, foundCometPos.y, foundCometPos.z);
 		glUniform1i(glGetUniformLocation(currentProgram, "isCometActive"), 1);
 	}
