@@ -16,13 +16,11 @@ CelestialBody::CelestialBody(float bodySize, float rotSpeed)
     currentRotation = 0.0f;
     position = glm::vec3(0.0f); 
     color = glm::vec3(1.0f);
-    isSun = 0;
 }
 
 void CelestialBody::InitAsSun()
 {
     color = glm::vec3(2.0f, 0.85f, 0.2f); 
-    isSun = 1;
     GenerateSphere(36, 36); 
 
     textureId = LoadTexture("textures/sun.jpg");

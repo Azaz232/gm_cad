@@ -30,7 +30,6 @@ protected:
 	float rotationSpeed;
 	float currentRotation;
 	glm::vec3 position;
-	int isSun = 0;
 
 	GLuint vao = 0;
 	GLuint vbo = 0;

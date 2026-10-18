@@ -13,7 +13,6 @@ Planet::Planet(float bodySize, float rotSpeed, float orbRadius, float orbSpeed, 
 	orbitSpeed = orbSpeed;
 	currentOrbitAngle = 0.0f;
 	color = bodyColor;
-	isSun = 0;
 
 	textureId = LoadTexture(texturePath);
 

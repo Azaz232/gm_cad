@@ -15,7 +15,6 @@ Comet::Comet(float bodySize, float rotSpeed, float orbRadiusX, float orbRadiusZ,
 	currentOrbitAngle = 0.0f;
 	
 	color = glm::vec3(0.6f, 2.0f, 0.6f);
-	isSun = 0;
 	textureId = 0;
 
 	GenerateSphere(36, 36);
