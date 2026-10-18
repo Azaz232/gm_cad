@@ -22,7 +22,7 @@ bool Scene::Init()
 	sun = new CelestialBody(3.5f, 10.0f);
 	sun->InitAsSun();
 
-	Musya = sun->GetTextureLoader("textures/musya1.png");
+	Musya = sun->GetTextureLoader("textures/musya2.png");
 
 	Planet* mercury = new Planet(0.25f, 15.0f, 6.0f, 60.0f, glm::vec3(0.6f, 0.6f, 0.6f), "textures/mercury.jpg");
 	mercury->GenerateOrbit();
