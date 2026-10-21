@@ -158,6 +158,7 @@
       <SubType>
       </SubType>
     </None>
+    <None Include="README.md" />
     <None Include="vertex.glsl">
       <SubType>
       </SubType>

@@ -200,7 +200,6 @@ GLuint CelestialBody::LoadTexture(const char* path)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         stbi_image_free(data);
-        std::cout << "Successfully loaded texture: " << path << std::endl;
     }
     else
     {
